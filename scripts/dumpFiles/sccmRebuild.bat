@@ -1,7 +1,7 @@
 ::sccmRebuild.bat
 ::Rebuild sccm 
 ::
-::Created by Jan De Smet
+::Created by Spuzzelsnest
 ::
 ::Change Log
 ::-----------

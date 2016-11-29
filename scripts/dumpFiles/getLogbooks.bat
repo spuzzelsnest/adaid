@@ -2,7 +2,7 @@
 ::Create Archive of Event Viewer 
 ::    - Security, Application, Junos Pulse
 ::
-::Created by Jan De Smet
+::Created by Spuzzelsnest
 ::
 ::Change Log
 ::-----------

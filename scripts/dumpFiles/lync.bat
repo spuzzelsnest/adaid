@@ -2,7 +2,7 @@
 ::Cleanup lync/skype profile after server change 
 ::
 ::
-::Created by Jan De Smet
+::Created by Spuzzelsnest
 ::
 ::Change Log
 ::-----------

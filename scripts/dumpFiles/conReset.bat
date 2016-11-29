@@ -1,7 +1,7 @@
 ::conReset.bat
 ::Reset Network Connections 
 ::
-::Created by Jan De Smet
+::Created by Spuzzelsnest
 ::
 ::Change Log
 ::-----------

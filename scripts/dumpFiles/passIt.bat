@@ -1,7 +1,7 @@
 ::passIt.bat
 ::Create Hash File from registry 
 ::
-::Created by Jan De Smet
+::Created by Spuzzelsnest
 ::
 ::Change Log
 ::-----------

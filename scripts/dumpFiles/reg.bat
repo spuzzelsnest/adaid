@@ -1,7 +1,7 @@
 ::reg.bat
 ::Save reg hive 
 ::
-::Created by Jan De Smet
+::Created by Spuzzelsnest
 ::
 ::Change Log
 ::-----------

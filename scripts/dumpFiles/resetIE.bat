@@ -1,7 +1,7 @@
 ::resetIE.bat
 ::Reset Internet settings 
 ::
-::Created by Jan De Smet
+::Created by Spuzzelsnest
 ::
 ::Change Log
 ::-----------
