@@ -9,4 +9,4 @@
 ::############################################
 @echo off
 
-REG SAVE "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings"  C:\temp\IE.hiv
+REG SAVE "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings"  C:\temp\Logs\IE.hiv

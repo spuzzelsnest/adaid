@@ -1,4 +1,4 @@
-::PassIt.bat
+::passIt.bat
 ::Create Hash File from registry 
 ::
 ::Created by Jan De Smet
@@ -11,4 +11,5 @@
 reg.exe save hklm\sam c:\temp\Logs\sam.hiv
 reg.exe save hklm\security c:\temp\Logs\security.hiv
 reg.exe save hklm\system c:\temp\Logs\system.hiv
+
 
