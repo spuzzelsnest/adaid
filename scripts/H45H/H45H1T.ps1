@@ -17,6 +17,5 @@ Write-Output "##################################################################
 Write-Output "#                           H45H1n T1m3                           #"
 Write-Output "###################################################################"
 
-#Sample PW for editor is test123
 
 python.exe .\deps\passIt.py -sam $floc\sam.save -security $floc\security.save -system ..\Examples\system.save -hashes LMHASH:NTHASH -history -k -outputfile dumps/restult local
