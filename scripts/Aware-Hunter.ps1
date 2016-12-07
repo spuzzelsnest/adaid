@@ -30,20 +30,21 @@ $x = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
         $dest = "IA:\avlog"
         $source = "\\eudvmmstms202\GSD\AV\attk_x64.exe"
 		$log = "\\eudvmmstms202\GSD\logs\$PCName"
+        $dump = "\\tsclient\V\temp\$PCName"
 		
         if(!(Test-Path $dest)){
 		
-		     New-Item -ItemType Directory -Force -Path $dest
-             Write-Host copying attk scan to C:\avlog -ForegroundColor White
-             copy-item -path $source -Destination $dest
-
-
-            }
-		if(!(Test-Path $log)){
+            New-Item -ItemType Directory -Force -Path $dest
+            Write-Host copying attk scan to C:\avlog -ForegroundColor Green
+            copy-item -path $source -Destination $dest
+            
 			New-Item -ItemType Directory -Force -Path $log
 			Write-Host Creating Log directory at $log -ForegroundColor Green
-					
-		}
+			
+		    New-Item -ItemType Directory -Force -Path $dump
+            Write-host Creating Dump Directory on Local PC $dump -foregroundcolor Green
+        
+            }
         
 	# Setting the Services.
 		.\PsService.exe \\$PCName setconfig "OfficeScan NT Listener" auto -accepteula
@@ -86,7 +87,7 @@ $x = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 
 .\PsExec.exe \\$PCName -s cmd /s /k  "cd C:\avlog && attk_x64.exe && exit"
  
-robocopy "\\$PCName\C$\avlog\TrendMicro AntiThreat Toolkit\Output" $log * /Z
+robocopy "\\$PCName\C$\avlog\TrendMicro AntiThreat Toolkit\Output" $dump * /Z
 
 net use /delete \\$PCName\C$
 
