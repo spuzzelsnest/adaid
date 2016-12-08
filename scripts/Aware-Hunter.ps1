@@ -34,17 +34,26 @@ $x = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 		
         if(!(Test-Path $dest)){
 		
-            New-Item -ItemType Directory -Force -Path $dest
-            Write-Host copying attk scan to C:\avlog -ForegroundColor Green
-            copy-item -path $source -Destination $dest
-            
+		     New-Item -ItemType Directory -Force -Path $dest
+             Write-Host copying attk scan to C:\avlog -ForegroundColor White
+             copy-item -path $source -Destination $dest
+            }
+		if(!(Test-Path $log)){
 			New-Item -ItemType Directory -Force -Path $log
 			Write-Host Creating Log directory at $log -ForegroundColor Green
-			
-		    New-Item -ItemType Directory -Force -Path $dump
+					
+		}
+        if(!(Test-Path $dump)){
+             
+            New-Item -ItemType Directory -Force -Path $dump
             Write-host Creating Dump Directory on Local PC $dump -foregroundcolor Green
+        }
+
         
-            }
+        
+        }
+        
+        
         
 	# Setting the Services.
 		.\PsService.exe \\$PCName setconfig "OfficeScan NT Listener" auto -accepteula
@@ -66,13 +75,13 @@ $x = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 		
 		if (Test-Path IA:\Windows.old){
 				Remove-Item IA:\Windows.old\ -Recurse -Force -Verbose
-				}else{
+		}else{
 				Write-host "no Windows.old Folder found" -ForegroundColor red
-				}
+		}
 		remove-item IA:\temp\* -recurse -force -verbose
 		Write-host "Cleaned up C:\temp\" -ForegroundColor Green 
 		
-		remove-item IA:\Windows\Temp\* -recurse -force -verbose
+		remove-item IA:\Windows\Temp\* -recurse -force -verbose 
 		write-host "Cleaned up C:\Windows\Temp" -ForegroundColor Green 
 
 	$UserFolders = get-childItem IA:\Users\ -Directory
@@ -87,7 +96,7 @@ $x = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 
 .\PsExec.exe \\$PCName -s cmd /s /k  "cd C:\avlog && attk_x64.exe && exit"
  
-robocopy "\\$PCName\C$\avlog\TrendMicro AntiThreat Toolkit\Output" $dump * /Z
+robocopy "\\$PCName\C$\avlog\TrendMicro AntiThreat Toolkit\Output" $log * /Z
 
 net use /delete \\$PCName\C$
 
