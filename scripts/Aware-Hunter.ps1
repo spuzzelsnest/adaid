@@ -47,12 +47,7 @@ $x = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
              
             New-Item -ItemType Directory -Force -Path $dump
             Write-host Creating Dump Directory on Local PC $dump -foregroundcolor Green
-        }
-
-        
-        
-        }
-        
+        }      
         
         
 	# Setting the Services.
