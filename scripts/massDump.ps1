@@ -16,7 +16,7 @@
 
 $list = Read-Host "TxT file with list of PC "
 $fileName = Read-Host "What filename will you sent"
-$list = Get-Content D:\GSD\$list.txt
+$list = Get-Content D:\GSD\list.txt
 foreach ($PCName in $list){
 
 		if(!(Test-Connection -Cn $PCName -BufferSize 16 -count 1 -ea 0 -quiet)){
