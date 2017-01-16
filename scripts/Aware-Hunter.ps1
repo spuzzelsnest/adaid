@@ -17,6 +17,9 @@
 #							- Combination of the existing script + extra's
 #  ==========================================================================
 
+#DEF VALUE'S
+
+
 $PCName = read-host "What is the pc-name"
 
 If(!(test-connection -Cn $PCName -BufferSize 16 -Count 1 -ea 0 -quiet)){
@@ -28,9 +31,9 @@ $x = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 		#Def Var + copy Create AVlog Dir and Copy ATTK scan
         new-PSdrive IA Filesystem \\$PCName\C$
         $dest = "IA:\avlog"
-        $source = "\\eudvmmstms202\GSD\AV\attk_x64.exe"
-		$log = "\\eudvmmstms202\GSD\logs\$PCName"
-        $dump = "\\tsclient\V\temp\$PCName"
+        $source = "" #Add Share where ATTK_x64.exe is located
+	$log = "" #Add the Log Folder
+        $dump = "" #Add the Dump Folder
 		
         if(!(Test-Path $dest)){
 		
