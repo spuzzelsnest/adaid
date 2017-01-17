@@ -5,6 +5,7 @@ Also some part of the Tools can be used for remote tasks in a Network using PSto
 
 
 ﻿# How To
+ 
 As of now it is for is still run by a single .bat (adaid.bat) file running single powershell scripts. In the futur updates it will be changed more in the form of a framework.
 
 By running the bat file in CMD.exe in a Active Directory enviroment it can run simple info scripts on what is to show about the user.
