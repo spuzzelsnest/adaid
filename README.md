@@ -5,5 +5,5 @@ Also some part of the Tools can be used for remote tasks in a Network using PSto
 
 
 ﻿# TO DO
-  - write fill install 
+  - write full install 
   - inform on how to tutorial
