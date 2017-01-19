@@ -24,16 +24,16 @@ If(!(test-connection -Cn $PCName -BufferSize 16 -Count 1 -ea 0 -quiet)){
 		Write-host -NoNewline  "PC " $PCName  " is NOT online!!! ... Press any key  " `n
 		$x = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 }else{
-		$src = "\\eudvmmstms202\GSD\dumpfiles"
+		$src = "" #source of the dump files - basically bat files that can be sent to the pc an result back to server
 		$dest = "\\$PCName\C$\temp"
 				if(!(Test-Path $dest\Logs)){
 					New-Item -ItemType Directory -Force -Path $dest\Logs
 				}else{
 					write-host The $logs directory exsists -foreground "green"
 				}
-		.\psexec.exe -accepteula \\$PCName -s cmd /c copy $src\$fileName $dest
+		.\PSTools\psexec.exe -accepteula \\$PCName -s cmd /c copy $src\$fileName $dest
 		Write-Host $filename copied to $dest -Foreground "green"
-		.\PsExec.exe -accepteula \\$PCName -s powershell C:\Temp\$filename
+		.\PSTools\PsExec.exe -accepteula \\$PCName -s powershell C:\Temp\$filename
 }
 #check if the V drive is online 
 		if(!(Test-path $log)){
