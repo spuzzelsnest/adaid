@@ -1,4 +1,4 @@
-﻿#  ==========================================================================
+#  ==========================================================================
 #
 # NAME:		sccmCleanup.ps1
 #
@@ -176,8 +176,3 @@ Else {"SUCCESS: CCMSETUP install completed successfully" >> $LogFile }
 #Report Completion back to the command line
 $CCMTime = Get-Item -Path C:\Windows\ccmsetup\ccmsetup.cab | Select-Object -Property CreationTime
 "CCM Installed on $CCMTime"
-
-
-
-
-#\\eudvmmssccm002\SMS_KO1\Client\ccmsetup.exe
