@@ -1,4 +1,4 @@
-﻿#  ==========================================================================
+#  ==========================================================================
 #
 # NAME:		onlineStatus.ps1
 #
@@ -19,13 +19,12 @@ $list =  get-content C:\Users\$env:USERNAME\Desktop\PC-list.txt
 
 foreach ($PCName in $list){
 
-$status = Test-Connection -ComputerName $PCName -Buffersize 16 -count 1 -quiet 
+    $status = Test-Connection -ComputerName $PCName -Buffersize 16 -count 1 -quiet 
 
-if ($status -eq "False") {write-host "$PCName is offline " -Foreground "magenta"}
-else {
+        if ($status -eq "False") {
+                write-host "$PCName is offline " -Foreground "magenta"
+        }else {
 
-Write-Host "$PCName is online" -Foreground "Green"
-}
-
-
+                Write-Host "$PCName is online" -Foreground "Green"
+        }
 }
