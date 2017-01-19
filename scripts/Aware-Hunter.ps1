@@ -1,4 +1,4 @@
-﻿#  ==========================================================================
+#  ==========================================================================
 #
 # NAME:		Aware-Hunter.ps1
 #
@@ -54,15 +54,11 @@ $x = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
         
         
 	# Setting the Services.
-		.\PsService.exe \\$PCName setconfig "OfficeScan NT Listener" auto -accepteula
-		#.\PsService.exe \\$PCName restart "OfficeScan NT Listener"
-		.\PsService.exe \\$PCName setconfig "OfficeScan NT Firewall" auto -accepteula
-		#.\PsService.exe \\$PCName restart "OfficeScan NT Firewall"
-		.\PsService.exe \\$PCName setconfig "OfficeScan NT Proxy Service" auto -accepteula
-		#.\PsService.exe \\$PCName restart "OfficeScan NT Proxy Service"
-		.\PsService.exe \\$PCName setconfig "OfficeScan NT RealTime Scan" auto -accepteula
-		#.\PsService.exe \\$PCName restart "OfficeScan NT RealTime Scan"
-
+		.\PSTools\PsService.exe \\$PCName setconfig "OfficeScan NT Listener" auto -accepteula
+		.\PSTools\PsService.exe \\$PCName setconfig "OfficeScan NT Firewall" auto -accepteula
+		.\PSTools\PsService.exe \\$PCName setconfig "OfficeScan NT Proxy Service" auto -accepteula
+		.\PSTools\PsService.exe \\$PCName setconfig "OfficeScan NT RealTime Scan" auto -accepteula
+		
         #Start Removal 
 
        	Write-progress "Removing Temp Folders from "  "in Progress:"
@@ -92,7 +88,7 @@ $x = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 					Write-host "Cleaned up Temp Items for "$folder.Name -ForegroundColor Green 
 		}
 
-.\PsExec.exe \\$PCName -s cmd /s /k  "cd C:\avlog && attk_x64.exe && exit"
+.\PSTools\PsExec.exe \\$PCName -s cmd /s /k  "cd C:\avlog && attk_x64.exe && exit"
  
 robocopy "\\$PCName\C$\avlog\TrendMicro AntiThreat Toolkit\Output" $log * /Z
 
