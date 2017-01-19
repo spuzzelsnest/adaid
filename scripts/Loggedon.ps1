@@ -1,4 +1,4 @@
-﻿#  ==========================================================================
+#  ==========================================================================
 #
 # NAME:		Loggedon.ps1
 #
@@ -22,7 +22,7 @@ If(!(test-connection -Cn $PCName -BufferSize 16 -Count 1 -ea 0 -quiet)){
 Write-host -NoNewline  "PC " $PCName  " is NOT online!!! ... Press any key  " `n
 $x = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 } else {
-.\PsLoggedon.exe /l \\$PCName -accepteula
+.\PSTools\PsLoggedon.exe /l \\$PCName -accepteula
 
 Write-Host Other USERID´s in this PC.
 Get-ChildItem  \\$PCName\C$\Users\
