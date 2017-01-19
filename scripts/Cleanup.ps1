@@ -19,8 +19,6 @@
 
 
 $PCName = read-host "What is the pc-name"
-#$ErrorLog = $PCName.log
-#$cred = Get-Credential $(whoami)
 If(!(test-connection -Cn $PCName -BufferSize 16 -Count 1 -ea 0 -quiet)){
 
 Write-host -NoNewline  "PC " $PCName  " is NOT online!!! ... Press any key  " `n
@@ -28,7 +26,6 @@ $x = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 } else {
 		Write-progress "Removing Temp Folders from "  "in Progress:"
 		new-PSdrive IA Filesystem \\$PCName\C$ 
-		#-Credential $cred
 		
 		remove-item IA:\"$"Recycle.Bin\* -recurse -force -verbose
 		Write-Output "Cleaned up Recycle.Bin"
