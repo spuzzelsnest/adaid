@@ -1,4 +1,4 @@
-﻿#  ==========================================================================
+#  ==========================================================================
 #
 # NAME:		massDump.ps1
 #
@@ -24,11 +24,11 @@ foreach ($PCName in $list){
 		}else{
 				Write-Host "PC " $PCName  "is online, Lets play ball" -Foreground "green"
 				
-				$src = "\\eudvmmstms202\GSD\dumpfiles"
+				$src = "" #Source of the dump files - same as in the dumpIt file
 				$dest = "\\$PCName\C$\temp"
 				Copy-Item $src\$filename -Destination $dest -Force -verbose
 				
-				.\PsExec.exe \\$PCName -s C:\Temp\$filename
+				.\PSTools\PsExec.exe \\$PCName -s C:\Temp\$filename
 				
 				if(!(Test-Path $dest\Logs)){
 						New-Item -ItemType Directory -Force -Path $dest\Logs
