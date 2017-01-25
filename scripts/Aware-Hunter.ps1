@@ -6,15 +6,15 @@
 # EMAIL:	jan.de-smet@t-systems.com
 #
 # COMMENT: 
-#			Comination of the Anti virus tools so far available 
-#			- create AVlog Dir on Local C and copy ATTKscan
-#           - Set Av Services
-#			- Cleanup Temp Files
-#			- Regedit anomalies
+#		Comination of the Anti virus tools so far available 
+#		- create AVlog Dir on Local C and copy ATTKscan
+#		- Set Av Services
+#		- Cleanup Temp Files
+#		- Regedit anomalies
 #           	
 #       VERSION HISTORY:
 #       1.0     01.07.2015 	- Initial release
-#							- Combination of the existing script + extra's
+#				- Combination of the existing cleanup script + extra's
 #  ==========================================================================
 
 #DEF VALUE'S
