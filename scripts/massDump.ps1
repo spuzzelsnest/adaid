@@ -14,9 +14,9 @@
 #
 #  ==========================================================================
 
-$list = Read-Host "TxT file with list of PC "
+#list located on the desktop 
+$list =  get-content C:\Users\$env:USERNAME\Desktop\PC-list.txt
 $fileName = Read-Host "What filename will you sent"
-$list = Get-Content  #add the txt file with the PC-names 
 foreach ($PCName in $list){
 
 		if(!(Test-Connection -Cn $PCName -BufferSize 16 -count 1 -ea 0 -quiet)){
@@ -26,14 +26,15 @@ foreach ($PCName in $list){
 				
 				$src = "" #Source of the dump files - same as in the dumpIt file
 				$dest = "\\$PCName\C$\temp"
-				Copy-Item $src\$filename -Destination $dest -Force -verbose
-				.\PSTools\PsExec.exe \\$PCName -s C:\Temp\$filename
-
+				
 				if(!(Test-Path $dest\Logs)){
 						New-Item -ItemType Directory -Force -Path $dest\Logs
 				}else{
 						write-host Directory exsists -Foreground "green"
 				}
+				
+				Copy-Item $src\$filename -Destination $dest -Force -verbose
+				.\PSTools\PsExec.exe \\$PCName -s C:\Temp\$filename
 				
 				New-Item \\tsclient\V\temp\$PCName -type directory -force
 				move-item $dest\Logs  -destination  \\tsclient\V\temp\$PCName -Force
