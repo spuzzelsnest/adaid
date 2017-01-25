@@ -11,12 +11,11 @@
 #           	
 #       VERSION HISTORY:
 #       1.0     18.08.2016 - Initial release
-#
+#	1.1	25.01.2017 - Destination not copied by psexec
 #  ==========================================================================
 
 $PCName = read-host "What is the pc-name"
 $fileName = Read-Host "What filename will you sent"
-$cred = Get-Credential $(whoami)
 $log = "\\tsclient\V\temp\$PCName"
 
 #check if pc is online
@@ -24,14 +23,14 @@ If(!(test-connection -Cn $PCName -BufferSize 16 -Count 1 -ea 0 -quiet)){
 		Write-host -NoNewline  "PC " $PCName  " is NOT online!!! ... Press any key  " `n
 		$x = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 }else{
-		$src = "" #source of the dump files - basically bat files that can be sent to the pc an result back to server
-		$dest = "\\$PCName\C$\temp"
+		$src = "" #source folder of the dump files - basically .bat and .ps1 files that can be sent to the pc an result back to server
+		$dest = "" #destenation of the dump file example \\$PCName\C$\temp
 				if(!(Test-Path $dest\Logs)){
 					New-Item -ItemType Directory -Force -Path $dest\Logs
 				}else{
 					write-host The $logs directory exsists -foreground "green"
 				}
-		.\PSTools\psexec.exe -accepteula \\$PCName -s cmd /c copy $src\$fileName $dest
+		copy-item -path $src/$filename -destination $dest
 		Write-Host $filename copied to $dest -Foreground "green"
 		.\PSTools\PsExec.exe -accepteula \\$PCName -s powershell C:\Temp\$filename
 }
