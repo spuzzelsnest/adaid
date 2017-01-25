@@ -14,17 +14,20 @@
 #
 #  ==========================================================================
 
-#list located on the desktop 
+Write-Host "Make sure you have create the PC-list.txt file on your Desktop"
+$x = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 $list =  get-content C:\Users\$env:USERNAME\Desktop\PC-list.txt
-$fileName = Read-Host "What filename will you sent"
+$src = "dumpFiles" #source folder of the dump files - basically .bat and .ps1 files that can be sent to the pc an result back to server
+write-host "Can choose from the following Files"
+Get-ChildItem $src | select Name
+$fileName = Read-Host "What file do you want to send"
+$PCName = Read-Host "What is the pc-name"
 foreach ($PCName in $list){
 
 		if(!(Test-Connection -Cn $PCName -BufferSize 16 -count 1 -ea 0 -quiet)){
 				Write-host  "PC " $PCName  " is NOT online!!!" -foreground "magenta"
 		}else{
 				Write-Host "PC " $PCName  "is online, Lets play ball" -Foreground "green"
-				
-				$src = "" #Source of the dump files - same as in the dumpIt file
 				$dest = "\\$PCName\C$\temp"
 				
 				if(!(Test-Path $dest\Logs)){
