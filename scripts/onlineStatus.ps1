@@ -14,7 +14,7 @@
 #
 #  ==========================================================================
 
-#read the list of pc
+#read the list of pc located on the Desktop
 $list =  get-content C:\Users\$env:USERNAME\Desktop\PC-list.txt
 
 foreach ($PCName in $list){
