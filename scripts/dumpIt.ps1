@@ -30,17 +30,14 @@ If(!(test-connection -Cn $PCName -BufferSize 16 -Count 1 -ea 0 -quiet)){
 				}else{
 					write-host The $logs directory exsists -foreground "green"
 				}
-		copy-item -path $src/$filename -destination $dest
+		Copy-Item -Path $src/$filename -Destination $dest -Force -Verbose
 		Write-Host $filename copied to $dest -Foreground "green"
 		.\PSTools\PsExec.exe -accepteula \\$PCName -s powershell C:\Temp\$filename
 }
 #check if the V drive is online 
 		if(!(Test-path $log)){
-
 				Write-Host V drive is offline, No logs will be writen -Foreground "magenta"
-
 			}else{
-
 				Write-Host V drive is online, Logs will be written to $log -Foreground "green"
 				New-Item \\tsclient\V\temp\$PCName -type directory -force
 				move-item $dest\Logs  -destination $log -Force
