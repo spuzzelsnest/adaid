@@ -1,6 +1,6 @@
 #  ==========================================================================
 #
-# NAME:		massDump.ps1
+# NAME:		dumpMass.ps1
 #
 # AUTHOR:	Jan De Smet
 # EMAIL:	jan.de-smet@t-systems.com
