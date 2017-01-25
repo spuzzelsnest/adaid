@@ -51,6 +51,7 @@ $x = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 					Write-Output "Cleaned up Temp Items for "$folder.Name	
 		}
 net use /delete \\$PCName\C$
-}
+
 Write-Host "Press any key to continue ..."
 $x = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+}
