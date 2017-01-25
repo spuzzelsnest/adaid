@@ -14,8 +14,6 @@
 #
 #  ==========================================================================
 
-
-
 $PCName = read-host "What is the pc-name"
 If(!(test-connection -Cn $PCName -BufferSize 16 -Count 1 -ea 0 -quiet)){
 
