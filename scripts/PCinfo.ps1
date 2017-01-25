@@ -219,9 +219,9 @@ else {
     
 }
 
-# Output data
-$data.GetEnumerator() | Sort-Object 'Name' | Format-Table -AutoSize
-$data.GetEnumerator() | Sort-Object 'Name' | Out-GridView -Title "$private:computer Information"
+# For tabled Output data uncomment these 2 lines
+#$data.GetEnumerator() | Sort-Object 'Name' | Format-Table -AutoSize
+#$data.GetEnumerator() | Sort-Object 'Name' | Out-GridView -Title "$private:computer Information"
 
 Write-Host "Press any key to continue ..."
 $x = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
