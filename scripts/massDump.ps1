@@ -16,7 +16,7 @@
 
 $list = Read-Host "TxT file with list of PC "
 $fileName = Read-Host "What filename will you sent"
-$list = Get-Content D:\GSD\list.txt
+$list = Get-Content  #add the txt file with the PC-names 
 foreach ($PCName in $list){
 
 		if(!(Test-Connection -Cn $PCName -BufferSize 16 -count 1 -ea 0 -quiet)){
@@ -27,9 +27,8 @@ foreach ($PCName in $list){
 				$src = "" #Source of the dump files - same as in the dumpIt file
 				$dest = "\\$PCName\C$\temp"
 				Copy-Item $src\$filename -Destination $dest -Force -verbose
-				
 				.\PSTools\PsExec.exe \\$PCName -s C:\Temp\$filename
-				
+
 				if(!(Test-Path $dest\Logs)){
 						New-Item -ItemType Directory -Force -Path $dest\Logs
 				}else{
