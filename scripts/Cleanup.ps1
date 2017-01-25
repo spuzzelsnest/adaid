@@ -12,24 +12,23 @@
 #       VERSION HISTORY:
 #       1.0     01.01.2016 	- Initial release
 #		1.1     16.08.2016 	- added Windows.old removal
-#		1.2		20.10.2016 	- Removed Credentials
-#							- Added Layout Color
+#		1.2	20.10.2016 	- Removed Credentials
+#					- Added Layout Color
 #
 #  ==========================================================================
-
 
 $PCName = read-host "What is the pc-name"
 If(!(test-connection -Cn $PCName -BufferSize 16 -Count 1 -ea 0 -quiet)){
 
 Write-host -NoNewline  "PC " $PCName  " is NOT online!!! ... Press any key  " `n
 $x = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+
 } else {
 		Write-progress "Removing Temp Folders from "  "in Progress:"
 		new-PSdrive IA Filesystem \\$PCName\C$ 
-		
+
 		remove-item IA:\"$"Recycle.Bin\* -recurse -force -verbose
 		Write-Output "Cleaned up Recycle.Bin"
-		
 		
 		if (Test-Path IA:\Windows.old){
 				Remove-Item IA:\Windows.old\ -Recurse -Force -Verbose
@@ -52,7 +51,6 @@ $x = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 					Write-Output "Cleaned up Temp Items for "$folder.Name	
 		}
 net use /delete \\$PCName\C$
+}
 Write-Host "Press any key to continue ..."
 $x = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
-
-}
