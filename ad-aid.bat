@@ -6,6 +6,9 @@
 ::Change Log
 ::-----------
 ::V1.0 Initial release 04-03-2016
+::v1.4 Added the Cleanup script 05-06-2016
+::v1.5 Added the Aware-Hunter tool 23-09-2016
+::V1.6 Added dump files to official release 26-01-2016
 ::############################################
 @echo off
 mode con:cols=140 lines=100
@@ -40,16 +43,18 @@ echo                                          /   __       \.
 echo                                         /___/
 echo .
 echo                                   Hello  %UserName%  
-echo                                   Welcome to AD-Aid (v1.05)
+echo                                   Welcome to AD-Aid (v1.06)
 echo                      Press:
 echo                               (1)   User info
 echo                               (2)   PC info
-echo                               (3)   Antivirus Tools
+echo                               (3)   Antivirus and Cleaning Tools
 echo                               (4)   User Loggedon to PC
-echo                               (5)   Exit
+echo                               (5)   Dump File to PC
+echo                               (6)   Exit                   
 echo	.
 choice /c 12345 /M "Let's see, what u want to do?"
 
+if Errorlevel 6 goto 6
 if Errorlevel 5 goto 5
 if Errorlevel 4 goto 4
 if Errorlevel 3 goto 3
@@ -72,29 +77,32 @@ Goto End
 
 :3
 cls
+echo ##########################################################################################################
+echo #                                   Anti Virus and Cleaning Tool                                         #
+echo ##########################################################################################################
 echo                               (1)   Clean TEMP folders
 echo                               (2)   Set AV Services
 echo                               (3)   Aware-Hunter 
 choice /c 123 /M "Let's see, what u want to do?"
 
-if ErrorLevel 1 goto 21
-if ErrorLevel 2 goto 22
-if ErrorLevel 3 goto 23
+if ErrorLevel 1 goto 31
+if ErrorLevel 2 goto 32
+if ErrorLevel 3 goto 33
 Goto End
 
-:21
+:31
 cls
 powershell.exe .\Cleanup.ps1
 cd..
 Goto END
 
-:22
+:32
 cls
 powershell.exe .\SetAVServices.ps1
 cd..
 Goto END
 
-:23
+:33
 cls
 powershell.exe .\aware-hunter.ps1
 cd..
@@ -107,5 +115,30 @@ cd ..
 Goto End
 
 :5
+cls
+echo ##########################################################################################################
+echo #                                         Dump file to PC                                                #
+echo ##########################################################################################################
+echo                        This set of scripts dumps a bat file to a network PC 
+echo                         
+echo                               (1)   Dump to 1 PC
+echo                               (2)   Dump to range of PC's (make sure PC-list.txt exists on your desktop)
+choice /c 12 /M "Let's see, what u want to do?"
+
+if ErrorLevel 1 goto 51
+if ErrorLevel 2 goto 52
+Goto End
+
+:51
+cls
+powershell.exe .\dumpIt.ps1
+Goto End
+
+:52
+cls
+powershell.exe .\dumpMass.ps1
+Goto End
+
+:6
 cls
 :End
