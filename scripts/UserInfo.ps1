@@ -11,7 +11,7 @@
 #           	
 #       VERSION HISTORY:
 #       1.0     01.07.2015 	- Initial release
-#		1.1		19.10.2016 	- Changed layour
+#       1.1		19.10.2016 	- Changed layour
 #							- Added manager
 #
 #  ==========================================================================
