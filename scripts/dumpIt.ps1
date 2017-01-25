@@ -14,7 +14,10 @@
 #	1.1	25.01.2017 - Destination not copied by psexec
 #  ==========================================================================
 
-$PCName = read-host "What is the pc-name"
+$src = "dumpFiles" #source folder of the dump files - basically .bat and .ps1 files that can be sent to the pc an result back to server
+$PCName = Read-Host "What is the pc-name"
+write-host "Can choose from the following Files"
+Get-ChildItem $src | select Name
 $fileName = Read-Host "What filename will you sent"
 $log = "\\tsclient\V\temp\$PCName"
 
@@ -23,8 +26,7 @@ If(!(test-connection -Cn $PCName -BufferSize 16 -Count 1 -ea 0 -quiet)){
 		Write-host -NoNewline  "PC " $PCName  " is NOT online!!! ... Press any key  " `n
 		$x = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 }else{
-		$src = "" #source folder of the dump files - basically .bat and .ps1 files that can be sent to the pc an result back to server
-		$dest = "" #destenation of the dump file example \\$PCName\C$\temp
+		$dest = "\\$PCName\C$\temp" #destenation of the dump file example \\$PCName\C$\temp
 				if(!(Test-Path $dest\Logs)){
 					New-Item -ItemType Directory -Force -Path $dest\Logs
 				}else{
