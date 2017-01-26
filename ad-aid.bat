@@ -11,7 +11,7 @@
 ::V1.6 Added dump files to official release 26-01-2016
 ::############################################
 @echo off
-mode con:cols=140 lines=100
+mode con:cols=140 lines=80
 title AD-Aid
 cls
 cd scripts
@@ -52,7 +52,7 @@ echo                               (4)   User Loggedon to PC
 echo                               (5)   Dump File to PC
 echo                               (6)   Exit                   
 echo	.
-choice /c 12345 /M "Let's see, what u want to do?"
+choice /c 123456 /M "Let's see, what u want to do?"
 
 if Errorlevel 6 goto 6
 if Errorlevel 5 goto 5
@@ -119,8 +119,7 @@ cls
 echo ##########################################################################################################
 echo #                                         Dump file to PC                                                #
 echo ##########################################################################################################
-echo                        This set of scripts dumps a bat file to a network PC 
-echo                         
+echo                        This set of scripts dumps a bat file to a network PC
 echo                               (1)   Dump to 1 PC
 echo                               (2)   Dump to range of PC's (make sure PC-list.txt exists on your desktop)
 choice /c 12 /M "Let's see, what u want to do?"
