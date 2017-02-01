@@ -19,7 +19,7 @@ $PCName = Read-Host "What is the pc-name"
 write-host "Can choose from the following Files"
 Get-ChildItem $src | select Name
 $fileName = Read-Host "What filename will you sent"
-$log = "\\tsclient\V\temp\$PCName"
+$log = "$env:userprofile\desktop\$PCName"
 
 #check if pc is online
 If(!(test-connection -Cn $PCName -BufferSize 16 -Count 1 -ea 0 -quiet)){
@@ -36,14 +36,19 @@ If(!(test-connection -Cn $PCName -BufferSize 16 -Count 1 -ea 0 -quiet)){
 		Write-Host $filename copied to $dest -Foreground "green"
 		.\PSTools\PsExec.exe -accepteula \\$PCName -s powershell C:\Temp\$filename
 }
-#check if the V drive is online 
+
+#Log files writen to the Agents Desktop
+
 		if(!(Test-path $log)){
-				Write-Host V drive is offline, No logs will be writen -Foreground "magenta"
+				Write-Host $log is not available -Foreground "magenta"
+				new-Item $log -type directory -Force
 			}else{
-				Write-Host V drive is online, Logs will be written to $log -Foreground "green"
-				New-Item \\tsclient\V\temp\$PCName -type directory -force
-				move-item $dest\Logs  -destination $log -Force
-}
+				Write-Host Logs will be written to $log -Foreground "green"
+			}
+#Moving the files to the desktop 
+
+robocopy $dest\logs $log * /Z
+
 
 #remove the dump files
 
