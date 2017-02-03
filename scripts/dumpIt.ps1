@@ -35,7 +35,6 @@ If(!(test-connection -Cn $PCName -BufferSize 16 -Count 1 -ea 0 -quiet)){
 		Copy-Item -Path $src/$filename -Destination $dest -Force -Verbose
 		Write-Host $filename copied to $dest -Foreground "green"
 		.\PSTools\PsExec.exe -accepteula \\$PCName -s powershell C:\Temp\$filename
-}
 
 #Log files writen to the Agents Desktop
 
@@ -54,3 +53,4 @@ robocopy $dest\logs $log * /Z
 
 Remove-Item $dest\$filename -Verbose
 Write-Host Files removed from $PCName -Foreground "green"
+}
