@@ -20,14 +20,14 @@ write-host "Can choose from the following Files"
 Get-ChildItem $src | select Name
 $fileName = Read-Host "What filename will you sent"
 $log = "$env:userprofile\desktop\$PCName"
+$dest = "\\$PCName\C$\temp" #destenation of the dump file example \\$PCName\C$\temp
 
 #check if pc is online
 If(!(test-connection -Cn $PCName -BufferSize 16 -Count 1 -ea 0 -quiet)){
 		Write-host -NoNewline  "PC " $PCName  " is NOT online!!! ... Press any key  " `n
 		$x = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 }else{
-		$dest = "\\$PCName\C$\temp" #destenation of the dump file example \\$PCName\C$\temp
-				if(!(Test-Path $dest\Logs)){
+	if(!(Test-Path $dest\Logs)){
 					New-Item -ItemType Directory -Force -Path $dest\Logs
 				}else{
 					write-host The $logs directory exsists -foreground "green"
