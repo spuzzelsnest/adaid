@@ -10,11 +10,6 @@
 ::############################################
 @echo off
 cd C:\Temp
-if exist dir Logs(
-    rem file exists
-) else (
- mkdir Logs
-)
 
 for /f "tokens=2-8 delims=.:/ " %%a in ("%date% %time%") do set stamp=%%c-%%a-%%b_%%d-%%e
 set PC=%COMPUTERNAME%
