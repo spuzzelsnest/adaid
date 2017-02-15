@@ -9,7 +9,8 @@
 ::############################################
 @echo off
 cd C:\temp\Logs\
-ipconfig /reslease > result.log
+ipconfig /release > result.log
+ipconfig /renew >> result.log
 route print >> result.log
 ipconfig /displaydns >> result.log
 ipconfig /flushdns >> result.log
