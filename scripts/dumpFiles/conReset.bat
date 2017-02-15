@@ -8,10 +8,11 @@
 ::V1.0 Initial release 24-08-2016
 ::############################################
 @echo off
-ipconfig /reslease > restult.log
+cd C:\temp\Logs\
+ipconfig /reslease > result.log
+route print >> result.log
+ipconfig /displaydns >> result.log
 ipconfig /flushdns >> result.log
-netsh winsock reset
-netsh int ip reset resetlog.txt
+netsh winsock reset catalog
+netsh int ipv4 reset resetlog.log
 netsh int reset all
-netsh routing reset all
-netsh routing dump
