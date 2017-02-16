@@ -3,7 +3,7 @@
 # NAME:		onlineStatus.ps1
 #
 # AUTHOR:	Jan De Smet
-# EMAIL:	jan.de-smet@t-systems.com
+# EMAIL:	jan.mpdesmet@gmail.com
 #
 # COMMENT: 
 #			Check the status of a list of PC's
