@@ -3,7 +3,7 @@
 # NAME:		dumpMass.ps1
 #
 # AUTHOR:	Jan De Smet
-# EMAIL:	jan.de-smet@t-systems.com
+# EMAIL:	jan.mpdesmet@gmail.com
 #
 # COMMENT: 
 #			Dump mass request
