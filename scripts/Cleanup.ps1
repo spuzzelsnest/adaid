@@ -2,8 +2,8 @@
 #
 # NAME:		Cleanup.ps1
 #
-# AUTHOR:	Jan De Smet
-# EMAIL:	jan.de-smet@t-systems.com
+# AUTHOR:	Spuzzelsnest
+# EMAIL:	jan.mpdesmet@gmail.com
 #
 # COMMENT: 
 #			Clean Temp Folders.
