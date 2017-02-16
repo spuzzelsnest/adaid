@@ -2,8 +2,8 @@
 #
 # NAME:		Loggedon.ps1
 #
-# AUTHOR:	Jan De Smet
-# EMAIL:	jand.De-Smet@t-systems.com
+# AUTHOR:	Spuzzelsnest
+# EMAIL:	jan.mpdesmet@gmail.com
 #
 # COMMENT: 
 #			Get Available users from PC-name
