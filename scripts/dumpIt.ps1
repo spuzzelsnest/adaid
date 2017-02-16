@@ -3,7 +3,7 @@
 # NAME:		DumpIt.ps1
 #
 # AUTHOR:	Jan De Smet
-# EMAIL:	jan.de-smet@t-systems.com
+# EMAIL:	jan.mpdesmet@gmail.com
 #
 # COMMENT: 
 #			Dump files in the temp and retrive and move data to local.
