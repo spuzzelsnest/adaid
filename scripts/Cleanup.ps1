@@ -2,8 +2,8 @@
 #
 # NAME:		Cleanup.ps1
 #
-# AUTHOR:	Spuzzelsnest
-# EMAIL:	jan.mpdesmet@gmail.com
+# AUTHOR:	Jan De Smet
+# EMAIL:	jan.de-smet@t-systems.com
 #
 # COMMENT: 
 #			Clean Temp Folders.
@@ -12,9 +12,9 @@
 #       VERSION HISTORY:
 #       1.0     01.01.2016 	- Initial release
 #		1.1     16.08.2016 	- added Windows.old removal
-#		1.2	20.10.2016 	- Removed Credentials
-#					- Added Layout Color
-#
+#		1.2		20.10.2016 	- Removed Credentials
+#							- Added Layout Color
+#		1.3		27.03.2017	- Added extra Dir's
 #  ==========================================================================
 
 $PCName = read-host "What is the pc-name"
@@ -29,7 +29,7 @@ $x = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 
 		remove-item IA:\"$"Recycle.Bin\* -recurse -force -verbose
 		Write-Output "Cleaned up Recycle.Bin"
-		
+				
 		if (Test-Path IA:\Windows.old){
 				Remove-Item IA:\Windows.old\ -Recurse -Force -Verbose
 				}else{
@@ -40,8 +40,8 @@ $x = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 		
 		remove-item IA:\Windows\Temp\* -recurse -force -verbose
 		write-output "Cleaned up C:\Windows\Temp"
-
-	$UserFolders = get-childItem IA:\Users\ -Directory
+		
+		$UserFolders = get-childItem IA:\Users\ -Directory
 	
 		foreach ($folder in $UserFolders){
 				
@@ -49,6 +49,7 @@ $x = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 					remove-item $path\AppData\Local\Temp\* -recurse -force -verbose -ErrorAction SilentlyContinue
 					remove-item $path\AppData\Local\Microsoft\Windows\"Temporary Internet Files"\* -recurse -force -verbose -ErrorAction SilentlyContinue
 					Write-Output "Cleaned up Temp Items for "$folder.Name	
+					Remove-Item $path\Appdata\Local\Microsoft\Office\15.0\OfficeFileCache\* -Recurse
 		}
 net use /delete \\$PCName\C$
 

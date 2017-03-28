@@ -19,16 +19,14 @@ If(!(test-connection -Cn $PCName -BufferSize 16 -Count 1 -ea 0 -quiet)){
 Write-host -NoNewline  "PC " $PCName  " is NOT online!!! ... Press any key  " `n
 $x = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 } else {
-$creds = $whoami
-.\PsService.exe \\$PCName setconfig "OfficeScan NT Listener" auto -accepteula
-.\PsService.exe \\$PCName setconfig "OfficeScan NT Firewall" auto -accepteula
-.\PsService.exe \\$PCName setconfig "OfficeScan NT Proxy Service" auto -accepteula
-.\PsService.exe \\$PCName setconfig "OfficeScan NT RealTime Scan" auto -accepteula
+
+    .\PSTools\PsService.exe \\$PCName setconfig "OfficeScan NT Listener" auto -accepteula
+    .\PSTools\PsService.exe \\$PCName setconfig "OfficeScan NT Firewall" auto -accepteula
+    .\PSTools\PsService.exe \\$PCName setconfig "OfficeScan NT Proxy Service" auto -accepteula
+    .\PSTools\PsService.exe \\$PCName setconfig "OfficeScan NT RealTime Scan" auto -accepteula
 
 
-Write-Host "Press any key to continue ..."
+    Write-Host "Press any key to continue ..."
 
-$x = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
-
-
+    $x = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 }
