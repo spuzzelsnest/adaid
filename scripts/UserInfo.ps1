@@ -3,7 +3,7 @@
 # NAME:		UserInfo.ps1
 #
 # AUTHOR:	Jan De Smet
-# EMAIL:	jan.mpdesmet@gmail.com
+# EMAIL:	jan.de-smet@t-systems.com
 #
 # COMMENT: 
 #			Find user related info from AD.
@@ -11,9 +11,9 @@
 #           	
 #       VERSION HISTORY:
 #       1.0     01.07.2015 	- Initial release
-#       1.1		19.10.2016 	- Changed layour
+#       1.1		19.10.2016 	- Changed layout
 #							- Added manager
-#
+#		1.2		31.03.2017  - Change group list
 #  ==========================================================================
 
 Param(
@@ -33,7 +33,14 @@ Get-ADUser -Identity $Id -ErrorAction SilentlyContinue -properties * | select Sa
 #----------------------------------------------
 
 Write-Host Groups -ForegroundColor Green
-get-ADPrincipalGroupMembership $Id | select name |Format-Table -HideTableHeaders
+#get-ADPrincipalGroupMembership $Id | select name |Format-Table -HideTableHeaders
+$groups = (New-Object System.DirectoryServices.DirectorySearcher("(&(objectCategory=User)(samAccountName=$Id))")).FindOne().GetDirectoryEntry().memberOf
+foreach ($group in $groups) {
+	$regex = [regex] "((?<=CN=).*?(?=,))"
+	$group = $regex.Matches($group)
+	
+	Write-Host $group";"
+}
 
 #----------------------------------------------
 
