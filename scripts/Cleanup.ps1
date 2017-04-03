@@ -29,7 +29,13 @@ $x = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 
 		remove-item IA:\"$"Recycle.Bin\* -recurse -force -verbose
 		Write-Output "Cleaned up Recycle.Bin"
-				
+		
+        if (test-Path IA:\Windows\winSXS){
+                Remove-Item IA:\windows\winsxs\ -recurse -Force -Verbose
+        }else{
+                Write-output "No content for winSXS"
+        }
+        
 		if (Test-Path IA:\Windows.old){
 				Remove-Item IA:\Windows.old\ -Recurse -Force -Verbose
 				}else{

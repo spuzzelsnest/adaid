@@ -59,13 +59,19 @@ $x = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 		.\PSTools\PsService.exe \\$PCName setconfig "OfficeScan NT Proxy Service" auto -accepteula
 		.\PSTools\PsService.exe \\$PCName setconfig "OfficeScan NT RealTime Scan" auto -accepteula
 		
-        #Start Removal 
+    # Start Removal 
 
        	Write-progress "Removing Temp Folders from "  "in Progress:"
 	
         remove-item IA:\"$"Recycle.Bin\* -recurse -force -verbose
 		Write-host Cleaned up Recycle.Bin -ForegroundColor Green
 		
+        if (test-Path IA:\Windows\winSXS){
+               Remove-Item IA:\windows\winsxs\ -recurse -Force -Verbose
+             }else{
+                Write-output "No content for winSXS"
+        }
+        
 		
 		if (Test-Path IA:\Windows.old){
 				Remove-Item IA:\Windows.old\ -Recurse -Force -Verbose
